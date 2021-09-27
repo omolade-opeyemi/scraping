@@ -11,7 +11,7 @@ HOME_URL = 'https://www.jumia.com.ng/'
 # Create your views here.
 def homePage(request):
     
-    fanal_url = HOME_URL.format(quote_plus)
+    fanal_url = HOME_URL
     response = requests.get(fanal_url)
     data = response.text
     soup = BeautifulSoup(data, features='html.parser')
@@ -29,7 +29,7 @@ def homePage(request):
 
 def productsPage(request):
     
-    search = request.POST['search']
+    search = request.POST.get('search')
     models.Search.objects.create(search=search)
     fanal_url = BASE_URL.format(quote_plus(search))
     response = requests.get(fanal_url)
