@@ -1,0 +1,16 @@
+{% load static %}
+
+
+<div class="container">
+  <form action="{% url 'products' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-10">
+          <input type="text" class="form-control" placeholder="Search" name="search">
+        </div>
+        <div class="col">
+          <input class="btn btn-primary" type="submit" value="Search">
+        </div>
+    </div>
+  </form>
+</div>

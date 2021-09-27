@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title>Jumia Clone</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static '/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static '/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static '/css/tooplate-main.css'%}">
+    <link rel="stylesheet" href="{% static '/css/owl.css'%}">
+<!--
+Tooplate 2114 Pixie
+https://www.tooplate.com/view/2114-pixie
+-->
+  </head>
+
+  <body>
+    
+  {% include 'navbar.html'%}
+    
+  <!-- Page Content -->
+  <!-- Banner Starts Here -->
+  <div class="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="caption">
+            <h2>Web Scrapping Project</h2>
+            <div class="line-dec"></div>
+            <p>This is a web-scraping  website that scraps data from <strong>jumia.com</strong> by making use of python and django.
+            <br><br>It takes advantage of the strong django libray which is <strong>Beautiful Soup</strong>.It pulls data from jumia and output it on this site.</p>
+            <div class="main-button">
+              <a href="#">Order Now!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Banner Ends Here -->
+  <br>
+  {% include 'search.html'%}
+
+    <!-- Featured Starts Here -->
+  <div class="featured-items">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h1>Top selling items</h1>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="owl-carousel owl-theme">
+          {% for  post in final %}
+            <a href="{{post.3}}">
+              <div class="featured-item">
+                <img src="{{post.0}}" alt="Item 1">
+                <h4>{{post.1}}</h4>
+                <h6>{{post.2}}</h6>
+              </div>
+            </a>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Featred Ends Here -->
+
+  {% include 'footer.html'%}
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static '/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="{% static '/js/custom.js' %}"></script>
+    <script src="{% static '/js/owl.js' %}"></script>
+
+  </body>
+
+</html>

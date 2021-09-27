@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title>Pixie - Products</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static '/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static '/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static '/css/tooplate-main.css'%}">
+    <link rel="stylesheet" href="{% static '/css/owl.css'%}">
+<!--
+Tooplate 2114 Pixie
+https://www.tooplate.com/view/2114-pixie
+-->
+  </head>
+
+  <body>
+    
+  {% include 'navbar.html'%}
+
+    <!-- Page Content -->
+    <!-- Items Starts Here -->
+    <div class="featured-page">
+      <div class="container">
+        <div class="row">
+          {% include 'search.html'%}
+          <div class="col-md-4 col-sm-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>Featured Items</h1>
+            </div>
+          </div>
+          <div class="col-md-8 col-sm-12">
+            <div id="filters" class="button-group">
+              <button class="btn btn-primary" data-filter="*"><h1>{{find | title}}</h1></button>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="featured container no-gutter">
+      
+
+        <div class="row posts">
+          {% for post in final %}
+            <div id="1" class="item new col-md-4">
+              <a href="{{post.3}}">
+                <div class="featured-item">
+                  <img src="{{post.0}}" alt="">
+                  <h4>{{post.1}}</h4>
+                  <h6>{{post.2}}</h6>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+
+    
+    <!-- Featred Page Ends Here -->
+
+
+    {% include 'footer.html'%}
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static '/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="{% static '/js/custom.js' %}"></script>
+    <script src="{% static '/js/owl.js' %}"></script>
+    <script src="{% static '/js/isotope.js' %}"></script>
+
+  </body>
+
+</html>
