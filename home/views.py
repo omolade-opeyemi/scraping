@@ -4,7 +4,6 @@ import requests
 from requests.compat import quote_plus
 from bs4 import BeautifulSoup
 from .import models
-import numpy as np
 
 BASE_URL = 'https://www.jumia.com.ng/catalog/?q={}'
 HOME_URL = 'https://www.jumia.com.ng/'
