@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from .import models
 
 BASE_URL = 'https://www.jumia.com.ng/catalog/?q={}'
-HOME_URL = 'https://www.jumia.com.ng/'
+HOME_URL = 'https://www.jumia.com.ng'
 
 # Create your views here.
 def homePage(request):
