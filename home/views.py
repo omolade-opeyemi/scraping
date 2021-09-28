@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 import requests
 from requests.compat import quote_plus
+import bs4
 from bs4 import BeautifulSoup
 from .import models
+from urllib.request import urlopen as opp
 
 BASE_URL = 'https://www.jumia.com.ng/catalog/?q={}'
 HOME_URL = 'https://www.jumia.com.ng'
@@ -11,10 +13,13 @@ HOME_URL = 'https://www.jumia.com.ng'
 # Create your views here.
 def homePage(request):
     
-    fanal_url = HOME_URL
-    response = requests.get(fanal_url)
+    #final_url = opp(HOME_URL)
+    #page = final_url.read() 
+    response = requests.get('https://www.jumia.com.ng')
     data = response.text
-    soup = BeautifulSoup(data, features='html.parser')
+    #soup = BeautifulSoup(data, features='html.parser')
+    #data = page.text
+    soup = BeautifulSoup(data, 'html.parser')
     listings = soup.find_all('article',{'class':'prd _box _hvr'})
 
     final = []
