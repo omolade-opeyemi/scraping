@@ -20,7 +20,7 @@ def homePage(request):
     #soup = BeautifulSoup(data, features='html.parser')
     #data = page.text
     soup = BeautifulSoup(data, 'html.parser')
-    listings = soup.find_all('article',{'class':'prd _box _hvr'})
+    listings = soup.find_all('div',{'class':'itm'})
 
     final = []
     for post in listings:
