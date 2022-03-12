@@ -24,16 +24,15 @@ def homePage(request):
 
     final = []
     for post in listings:
-        image = post.find('img',class_='img' ).get('data-src')
-        desc = post.find('div', class_='name').text
-        price = post.find('div', class_='prc').text
+        image = post.article.a.find('img',class_='img' ).get('data-src')
+        desc = post.article.find('div', class_='name').text
+        price = post.article.find('div', class_='prc').text
         url = 'https://www.jumia.com.ng/'+post.find('a').get('href')
         final.append((image,desc,price,url))
     context={'final':final}
     return render(request, 'index.html', context)
 
 def productsPage(request):
-    
     search = request.POST.get('search')
     models.Search.objects.create(search=search)
     fanal_url = BASE_URL.format(quote_plus(search))
