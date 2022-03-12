@@ -24,9 +24,9 @@ def homePage(request):
 
     final = []
     for post in listings:
-        image = post.find('img').get('data-src')
-        desc = post.find(class_='name').text
-        price = post.find(class_='prc').text
+        image = post.find('img',class_='img' ).get('data-src')
+        desc = post.find('div', class_='name').text
+        price = post.find('div', class_='prc').text
         url = 'https://www.jumia.com.ng/'+post.find('a').get('href')
         final.append((image,desc,price,url))
     context={'final':final}
