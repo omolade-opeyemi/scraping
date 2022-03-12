@@ -15,22 +15,28 @@ def homePage(request):
     
     #final_url = opp(HOME_URL)
     #page = final_url.read() 
-    response = requests.get('https://www.jumia.com.ng')
+    response = requests.get('https://www.jumia.com.ng/flash-sales/')
     data = response.text
     #soup = BeautifulSoup(data, features='html.parser')
     #data = page.text
-    soup = BeautifulSoup(data, 'html.parser')
-    listings = soup.find_all('div',{'class':'itm col'})
+    soup = BeautifulSoup(data, features='html.parser')
+
+    listings = soup.find_all('article',{'class':'prd _fb _p col c-prd'})
 
     final = []
     for post in listings:
-        image = post.article.a.find('img',class_='img' ).get('data-src')
-        desc = post.article.find('div', class_='name').text
-        price = post.article.find('div', class_='prc').text
+        image = post.find('img').get('data-src')
+        desc = post.find('h3', class_='name').text
+        price = post.find('div', class_='prc').text
         url = 'https://www.jumia.com.ng/'+post.find('a').get('href')
         final.append((image,desc,price,url))
     context={'final':final}
     return render(request, 'index.html', context)
+
+    # image = post.article.a.find('img',class_='img' ).get('data-src')
+    #     desc = post.article.find('div', class_='name').text
+    #     price = post.article.find('div', class_='prc').text
+    #     url = 'https://www.jumia.com.ng/'+post.find('a').get('href')
 
 def productsPage(request):
     search = request.POST.get('search')
