@@ -12,17 +12,10 @@ HOME_URL = 'https://www.jumia.com.ng'
 
 # Create your views here.
 def homePage(request):
-    
-    #final_url = opp(HOME_URL)
-    #page = final_url.read() 
     response = requests.get('https://www.jumia.com.ng/flash-sales/')
     data = response.text
-    #soup = BeautifulSoup(data, features='html.parser')
-    #data = page.text
     soup = BeautifulSoup(data, features='html.parser')
-
     listings = soup.find_all('article',{'class':'prd _fb _p col c-prd'})
-
     final = []
     for post in listings:
         image = post.find('img').get('data-src')
@@ -30,7 +23,20 @@ def homePage(request):
         price = post.find('div', class_='prc').text
         url = 'https://www.jumia.com.ng/'+post.find('a').get('href')
         final.append((image,desc,price,url))
-    context={'final':final}
+    response2 = requests.get('https://www.jumia.com.ng/mlp-pernod-ricard-store/')
+    data2 = response2.text
+    soup2 = BeautifulSoup(data2, features='html.parser') 
+    listings2 = soup2.find_all('article',{'class':'prd _fb col c-prd'})
+    final2 = []
+    
+    for post2 in listings2:
+        image2 = post2.find('img').get('data-src')
+        desc2 = post2.find('h3', class_='name').text
+        price2 = post2.find('div', class_='prc').text
+        url2 = 'https://www.jumia.com.ng/'+post2.find('a').get('href')
+        final2.append((image2,desc2,price2,url2))
+    context={'final':final, 'final2':final2}
+    
     return render(request, 'index.html', context)
 
     # image = post.article.a.find('img',class_='img' ).get('data-src')

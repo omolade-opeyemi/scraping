@@ -60,8 +60,8 @@ https://www.tooplate.com/view/2114-pixie
         <div class="col-md-12">
           <div class="section-heading">
             <div class="line-dec"></div>
-            <h1>Top selling items</h1>
-            prod 2
+            <h1>Flash Sale | Free Delivery</h1>
+            
           </div>
         </div>
         <div class="col-md-12">
@@ -79,6 +79,31 @@ https://www.tooplate.com/view/2114-pixie
           </div>
         </div>
       </div>
+      <!-- featured 2 -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h1>Pernod Ricard Products</h1>
+            
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="owl-carousel owl-theme">
+          {% for  pos in final2 %}
+            <a href="{{pos.3}}">
+              <div class="featured-item">
+                <img src="{{pos.0}}" alt="Item 1">
+                <h4>{{pos.1}}</h4>
+                <h6>{{pos.2}}</h6>
+                
+              </div>
+            </a>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+      <!-- fetured 2 ends here -->
     </div>
   </div>
   <!-- Featred Ends Here -->
